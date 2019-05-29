@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71922b72-e534-468c-aec9-ead85a7ebdee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TalkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TalkController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Traits/ApiResponser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/ApiResponser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,13 +26,13 @@
         <counts>
           <entry key="Procfile" value="1" />
           <entry key="env" value="1" />
-          <entry key="php" value="38" />
+          <entry key="php" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="1" />
-          <entry key="PHP" value="38" />
+          <entry key="PHP" value="39" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
@@ -100,7 +97,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="402">
@@ -108,6 +105,15 @@
               <folding>
                 <element signature="e#34#62#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2057">
+              <caret line="121" column="2" selection-start-line="121" selection-start-column="2" selection-end-line="121" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -151,6 +157,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/TalkController.php" />
         <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/TalkCollection.php" />
+        <option value="$PROJECT_DIR$/config/database.php" />
       </list>
     </option>
   </component>
@@ -270,6 +277,11 @@
               <item name="RealTimeChatApi" type="b2602c69:ProjectViewProjectNode" />
               <item name="RealTimeChatApi" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="RealTimeChatApi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RealTimeChatApi" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -283,6 +295,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\RealTimeChatApi" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -307,12 +324,12 @@
       <option name="presentableId" value="Default" />
       <updated>1559127251300</updated>
       <workItem from="1559127253181" duration="13227000" />
-      <workItem from="1559143258423" duration="4837000" />
+      <workItem from="1559143258423" duration="5197000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18064000" />
+    <option name="totallyTimeSpent" value="18424000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -324,7 +341,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1580938" />
@@ -543,6 +560,13 @@
           <folding>
             <element signature="e#34#62#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2057">
+          <caret line="121" column="2" selection-start-line="121" selection-start-column="2" selection-end-line="121" selection-end-column="2" />
         </state>
       </provider>
     </entry>
