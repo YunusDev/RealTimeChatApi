@@ -2,6 +2,7 @@
 
 
 namespace App\Traits;
+use Illuminate\Http\Resources\Json\Resource;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
@@ -19,14 +20,14 @@ trait ApiResponser
         return response()->json(['error' => $message, 'code' => $code], $code);
     }
 
-    protected function showAll(Collection $collection, $code = 200)
+    protected function showAll( $collection, $code = 200)
     {
 
         return $this->successResponse(['data' => $collection], $code);
 
     }
 
-    protected function showOne(Model $instance, $code = 200)
+    protected function showOne($instance, $code = 200)
     {
 
         return $this->successResponse(['data' => $instance], $code);

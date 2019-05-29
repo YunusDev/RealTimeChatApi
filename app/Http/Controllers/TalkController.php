@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TalkCollection;
+use App\Http\Resources\TalkResource;
 use App\Model\Talk;
 use App\Traits\ApiResponser;
 use App\User;
@@ -16,7 +18,9 @@ class TalkController extends Controller
 
         $talks = Talk::all();
 
-        return $this->showAll($talks);
+        $talk_res =  TalkCollection::collection($talks);
+
+        return $this->showAll($talk_res);
     }
 
 
@@ -41,9 +45,27 @@ class TalkController extends Controller
 
         $talk->users()->sync(explode(', ', $request->users_arr));
 
+        $talk = new TalkResource($talk);
+
         return $this->showOne($talk, 201);
     }
 
+    public function show($slug){
+
+        $talk = Talk::where('slug', $slug)->first();
+
+        $talk = new TalkResource($talk);
+
+        return $this->showOne($talk);
+    }
+
+
+    public function talkUsers(Talk $talk){
+
+        $users = $talk->users;
+
+        return $this->showAll($users);
+    }
 
 
     public function chat($slug){

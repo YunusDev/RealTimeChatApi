@@ -4,11 +4,13 @@ namespace App\Exceptions;
 
 use App\Traits\ApiResponser;
 use BadMethodCallException;
+use ErrorException;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\MessageBag;
 use Illuminate\Validation\ValidationException;
+use InvalidArgumentException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Http\Exceptions\ThrottleRequestsException;
 use Illuminate\Http\Response;
@@ -62,11 +64,13 @@ class Handler extends ExceptionHandler
             return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
         }
 
-
-        if ($exception instanceof ThrottleRequestsException) {
-            return $this->response409($e);
+        if ($exception instanceof InvalidArgumentException) {
+            return $this->errorResponse($exception->getMessage(), 405);
         }
 
+         if ($exception instanceof ErrorException) {
+             return $this->errorResponse($exception->getMessage(), 405);
+         }
 
         if ($exception instanceof BadMethodCallException) {
             return $this->errorResponse($exception->getMessage(), 405);

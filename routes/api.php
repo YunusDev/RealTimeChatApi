@@ -21,10 +21,12 @@ Route::apiResource('users', 'UserController');
 
 Route::post('talk/{user}/user', 'TalkController@store');
 Route::get('all/talks', 'TalkController@all');
+Route::get('talk/{talk}/users', 'TalkController@talkUsers')->name('talk.users');
+Route::get('talk/{slug}', 'TalkController@show')->name('talk.show');
 
 Route::get('all_messages', 'MessageController@fetchMessages');
-Route::get('messages/{talk}/talk', 'MessageController@talkMessages');
+Route::get('messages/{talk}/talk', 'MessageController@talkMessages')->name('talk.messages');
 Route::post('messages/{user}/user/{talk}/talk', 'MessageController@sendMessage');
 
 
-Route::get('talk/{slug}', 'TalkController@chat')->name('chat');
+//Route::get('talk/{slug}', 'TalkController@chat')->name('chat');
