@@ -6,6 +6,8 @@ use App\Traits\ApiResponser;
 use BadMethodCallException;
 use ErrorException;
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\MessageBag;
@@ -60,9 +62,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof ThrottleRequestsException) {
-            return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
-        }
+//        if ($exception instanceof ThrottleRequestsException) {
+//            return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
+//        }
 
         if ($exception instanceof InvalidArgumentException) {
             return $this->errorResponse($exception->getMessage(), 405);
@@ -74,6 +76,14 @@ class Handler extends ExceptionHandler
 
         if ($exception instanceof BadMethodCallException) {
             return $this->errorResponse($exception->getMessage(), 405);
+        }
+
+        if ($exception instanceof AuthenticationException) {
+            return $this->unauthenticated($request, $exception);
+        }
+
+        if ($exception instanceof AuthorizationException) {
+            return $this->errorResponse('Not Authorized', 403);
         }
 
         if ($exception instanceof QueryException) {
@@ -105,10 +115,11 @@ class Handler extends ExceptionHandler
 
     }
 
-    public function response409(Exception $e)
+    protected function unauthenticated($request, AuthenticationException $exception)
     {
-        $errors = new MessageBag();
-        $errors->add("message", "409 Too many requests");
-        return response()->make(view('errors.409')->withErrors($errors), Response::HTTP_CONFLICT);
+
+        return $this->errorResponse('Not Authenticated', 401);
     }
+
+
 }

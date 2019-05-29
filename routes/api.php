@@ -13,11 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::post('login', 'UserController@login')->name('login');
+Route::post('register', 'UserController@register');
+
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
 
 Route::apiResource('users', 'UserController');
+Route::get('user', 'UserController@user')->name('me');
+Route::get('user/{user}/logout', 'UserController@logout')->name('logout');
 
 Route::post('talk/{user}/user', 'TalkController@store');
 Route::get('all/talks', 'TalkController@all');
@@ -29,4 +34,4 @@ Route::get('messages/{talk}/talk', 'MessageController@talkMessages')->name('talk
 Route::post('messages/{user}/user/{talk}/talk', 'MessageController@sendMessage');
 
 
-//Route::get('talk/{slug}', 'TalkController@chat')->name('chat');
+Route::post('oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');

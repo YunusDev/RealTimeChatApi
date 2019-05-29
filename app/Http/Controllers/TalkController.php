@@ -9,10 +9,18 @@ use App\Traits\ApiResponser;
 use App\User;
 use Illuminate\Http\Request;
 
-class TalkController extends Controller
+class TalkController extends ApiController
 {
     //
-    use ApiResponser;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->middleware('can:view, talk')->only('show');
+//        $this->middleware('client.credentials');
+
+    }
+
 
     public function all(){
 

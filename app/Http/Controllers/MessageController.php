@@ -9,11 +9,16 @@ use App\Traits\ApiResponser;
 use App\User;
 use Illuminate\Http\Request;
 
-class MessageController extends Controller
+class MessageController extends ApiController
 {
     //
-    use ApiResponser;
 
+    public function __construct()
+    {
+        parent::__construct();
+//        $this->middleware('client.credentials');
+
+    }
     public function fetchMessages()
     {
 

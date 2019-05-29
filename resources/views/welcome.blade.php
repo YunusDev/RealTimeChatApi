@@ -83,7 +83,7 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
-
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam error esse in, maiores quae repellat temporibus unde. Consectetur, facilis, ut? Animi architecto cum debitis ipsa iste maiores possimus ullam?
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
