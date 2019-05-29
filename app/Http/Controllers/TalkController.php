@@ -16,7 +16,7 @@ class TalkController extends ApiController
     public function __construct()
     {
         parent::__construct();
-        $this->middleware('can:view, talk')->only('show');
+        $this->middleware('can:view,talk')->only('show');
 //        $this->middleware('client.credentials');
 
     }
