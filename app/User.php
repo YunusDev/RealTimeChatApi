@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Model\Message;
+use App\Model\Talk;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -36,4 +38,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function talkings()
+    {
+        return $this->hasMany(Talk::class);
+    }
+
+    public function talks(){
+
+        return $this->belongsToMany(Talk::class, 'user_talks')->withTimestamps();
+
+    }
 }

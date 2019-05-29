@@ -18,3 +18,13 @@ use Illuminate\Http\Request;
 //});
 
 Route::apiResource('users', 'UserController');
+
+Route::post('talk/{user}/user', 'TalkController@store');
+Route::get('all/talks', 'TalkController@all');
+
+Route::get('all_messages', 'MessageController@fetchMessages');
+Route::get('messages/{talk}/talk', 'MessageController@talkMessages');
+Route::post('messages/{user}/user/{talk}/talk', 'MessageController@sendMessage');
+
+
+Route::get('talk/{slug}', 'TalkController@chat')->name('chat');

@@ -3,10 +3,16 @@
 namespace App\Exceptions;
 
 use App\Traits\ApiResponser;
+use BadMethodCallException;
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\MessageBag;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Http\Exceptions\ThrottleRequestsException;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -52,6 +58,27 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof ThrottleRequestsException) {
+            return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
+        }
+
+
+        if ($exception instanceof ThrottleRequestsException) {
+            return $this->response409($e);
+        }
+
+
+        if ($exception instanceof BadMethodCallException) {
+            return $this->errorResponse($exception->getMessage(), 405);
+        }
+
+        if ($exception instanceof QueryException) {
+            return $this->errorResponse($exception->getMessage(), 405);
+        }
+
+        if ($exception instanceof NotFoundHttpException) {
+            return $this->errorResponse('The Url Specified cannnot be found', 404);
+        }
 
         if ($exception instanceof ValidationException) {
             return $this->convertValidationExceptionToResponse($exception, $request);
@@ -69,8 +96,15 @@ class Handler extends ExceptionHandler
     {
         $errors = $e->validator->errors()->getMessages();
 
-        $this->errorResponse($errors,    422);
+        return $this->errorResponse($errors,    422);
 
 
+    }
+
+    public function response409(Exception $e)
+    {
+        $errors = new MessageBag();
+        $errors->add("message", "409 Too many requests");
+        return response()->make(view('errors.409')->withErrors($errors), Response::HTTP_CONFLICT);
     }
 }
