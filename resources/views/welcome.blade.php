@@ -61,38 +61,50 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            p{
+
+                font-weight: bold;
+            }
+
+            code{
+
+                padding-left: 10px;
+                color: red;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+            <div class="container mt-20 mb-50">
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam error esse in, maiores quae repellat temporibus unde. Consectetur, facilis, ut? Animi architecto cum debitis ipsa iste maiores possimus ullam?
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <h3 class="mb-3">Test User - Login Details</h3>
+                <p>Email: <code>ade@gmail.com</code>, password: <code>ade123</code></p>
+
+                <h3 class="mb-3">End Points</h3>
+
+                <p>Create a Token to authenticate user<code>http://real-time-chat-api-1.herokuapp.com/api/oauth/token</code></p>
+                <p>Get authenticated User<code>http://real-time-chat-api-1.herokuapp.com/api/user</code></p>
+                <p>Get all User<code>http://real-time-chat-api-1.herokuapp.com/api/users</code></p>
+                <p>Create a User<code>http://real-time-chat-api-1.herokuapp.com/api/users</code></p>
+                <p>Edit a User<code>http://real-time-chat-api-1.herokuapp.com/api/users/{user}</code></p>
+                <p>Delete a User<code>http://real-time-chat-api-1.herokuapp.com/api/users/{user}</code></p>
+
+                <p>Post Talk and attach users<code>http://real-time-chat-api-1.herokuapp.com/api/talk/{user}/user</code></p>
+                <p>Get a  Talk<code>http://real-time-chat-api-1.herokuapp.com/api/talk/{slug}</code></p>
+                <p>Get All Associated Users for Talk<code>http://real-time-chat-api-1.herokuapp.com/api/talk/{talk}/users</code></p>
+
+                <p>Post Message to a Talk<code>http://real-time-chat-api-1.herokuapp.com/api/messages/{user}/user/{talk}/talk</code></p>
+                <p>Get All Messages<code>http://real-time-chat-api-1.herokuapp.com/api/all_messages</code></p>
+                <p>Get Messages for a talk<code>http://real-time-chat-api-1.herokuapp.com/api/messages/{talk}/talk</code></p>
+
+
+
+
+
+
+
             </div>
         </div>
     </body>
